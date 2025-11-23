@@ -5,7 +5,7 @@ module.exports = {
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '', // Default XAMPP MySQL password (empty)
-    database: process.env.DB_NAME || 'attendance_system',
+    database: process.env.DB_NAME || 'attendance system',
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
