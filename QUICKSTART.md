@@ -33,8 +33,8 @@ http://localhost:3000
 
 The server will display:
 - `Server running on http://localhost:3000`
-- `Connected to SQLite database`
-- `Database initialized at: [path]`
+- `Connected to MySQL database`
+- `Tables created successfully`
 - `Default users created` (on first run)
 
 ## Project Structure
@@ -42,8 +42,10 @@ The server will display:
 ```
 backend/
 ├── server.js          # Main server file
+├── config/
+│   └── database.js    # MySQL database configuration
 ├── database/
-│   └── db.js          # SQLite database setup
+│   └── db.js          # MySQL database connection
 ├── middleware/
 │   └── auth.js        # Authentication middleware
 └── routes/
@@ -65,15 +67,17 @@ backend/
 
 ## Database
 
-SQLite database is automatically created at:
-```
-server/data/attendance.db
-```
+MySQL database setup:
+1. Start XAMPP MySQL service
+2. Import `database/attendance_system.sql` via phpMyAdmin
+3. Database name: `attendance_system`
+4. The SQL file includes:
+   - Database creation
+   - Users table
+   - Attendance table
+   - Default users (admin, student, teacher)
 
-The database is initialized automatically on first run with:
-- Users table
-- Attendance table
-- Default users (admin, student, teacher)
+See [DATABASE_SETUP.md](DATABASE_SETUP.md) for detailed instructions.
 
 ## Troubleshooting
 
