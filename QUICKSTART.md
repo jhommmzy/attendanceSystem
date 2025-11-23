@@ -70,7 +70,7 @@ backend/
 MySQL database setup:
 1. Start XAMPP MySQL service
 2. Import `database/attendance_system.sql` via phpMyAdmin
-3. Database name: `attendance system` (with space)
+3. Database name: `attendancesystem`
 4. The SQL file includes:
    - Database creation
    - Users table

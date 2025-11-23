@@ -1,8 +1,8 @@
 -- Attendance System Database Schema
 -- For MySQL/MariaDB (XAMPP)
 
-CREATE DATABASE IF NOT EXISTS `attendance system`;
-USE `attendance system`;
+CREATE DATABASE IF NOT EXISTS attendancesystem;
+USE attendancesystem;
 
 -- Users table
 CREATE TABLE IF NOT EXISTS users (

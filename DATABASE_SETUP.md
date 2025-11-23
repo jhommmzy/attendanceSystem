@@ -14,7 +14,7 @@
 ### Option A: Using phpMyAdmin (Recommended)
 1. Open phpMyAdmin: `http://localhost/phpmyadmin`
 2. Click on "New" to create a new database
-3. Database name: `attendance system` (with space)
+3. Database name: `attendancesystem`
 4. Click "Import" tab
 5. Choose file: `database/attendance_system.sql`
 6. Click "Go" to import
@@ -25,7 +25,7 @@
 cd /path/to/attendancesystem
 
 # Import SQL file (default XAMPP MySQL has no password)
-# Note: Database name is "attendance system" (with space)
+# Note: Database name is "attendancesystem"
 mysql -u root -p < database/attendance_system.sql
 # When prompted for password, press Enter (empty password)
 ```
@@ -38,7 +38,7 @@ mysql -u root -p < database/attendance_system.sql
 
 ## Step 3: Verify Database
 1. Open phpMyAdmin
-2. Select `attendance system` database (with space)
+2. Select `attendancesystem` database
 3. Check that `users` and `attendance` tables exist
 4. Check that default users are inserted:
    - admin@gmail.com / admin123
@@ -61,12 +61,12 @@ The server will automatically connect to MySQL database.
 
 ### Connection Error
 - Make sure MySQL is running in XAMPP
-- Check database name matches: `attendance system` (with space)
+- Check database name matches: `attendancesystem`
 - Verify username is `root` (default XAMPP)
 - Check password in `backend/config/database.js`
 
 ### Table Already Exists
-- Drop existing database: `DROP DATABASE \`attendance system\`;`
+- Drop existing database: `DROP DATABASE attendancesystem;`
 - Re-import the SQL file
 
 ### Foreign Key Errors

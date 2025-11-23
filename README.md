@@ -85,7 +85,7 @@ The system uses MySQL database. Please follow the setup instructions in [DATABAS
 **Quick Setup:**
 1. Start XAMPP MySQL service
 2. Import `database/attendance_system.sql` via phpMyAdmin or command line
-3. Database name: `attendance system` (with space)
+3. Database name: `attendancesystem`
 4. Update database credentials in `backend/config/database.js` if needed
 4. Start the server: `npm start`
 

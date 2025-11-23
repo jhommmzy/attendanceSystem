@@ -27,7 +27,7 @@ app.use('/api/attendance', attendanceRoutes);
 dbModule.initPromise.then(() => {
     app.listen(PORT, () => {
         console.log(`Server running on http://localhost:${PORT}`);
-        console.log(`Connected to MySQL database: attendance system`);
+        console.log(`Connected to MySQL database: attendancesystem`);
     });
 }).catch(err => {
     console.error('Failed to start server:', err);

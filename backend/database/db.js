@@ -14,8 +14,8 @@ async function initDatabase() {
             password: dbConfig.password
         });
 
-        // Create database if it doesn't exist (use backticks for database name with spaces)
-        await tempConnection.query(`CREATE DATABASE IF NOT EXISTS \`${dbConfig.database}\``);
+        // Create database if it doesn't exist
+        await tempConnection.query(`CREATE DATABASE IF NOT EXISTS ${dbConfig.database}`);
         await tempConnection.end();
 
         // Create connection pool
