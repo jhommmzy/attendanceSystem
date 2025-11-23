@@ -124,7 +124,7 @@ window.openAddUserModal = function() {
     const submitButton = document.getElementById('submitButton');
     const userIdEl = document.getElementById('userId');
     const addUserForm = document.getElementById('addUserForm');
-    const passwordField = document.getElementById('userPassword');
+    const passwordField = document.getElementById('newUserPassword');
     const addUserMessage = document.getElementById('addUserMessage');
     const addUserModal = document.getElementById('addUserModal');
     
@@ -176,10 +176,10 @@ async function editUser(userId) {
             const modalTitle = document.getElementById('modalTitle');
             const submitButton = document.getElementById('submitButton');
             const userIdEl = document.getElementById('userId');
-            const userNameEl = document.getElementById('userName');
-            const userEmailEl = document.getElementById('userEmail');
-            const userRoleEl = document.getElementById('userRole');
-            const passwordField = document.getElementById('userPassword');
+            const userNameEl = document.getElementById('newUserName');
+            const userEmailEl = document.getElementById('newUserEmail');
+            const userRoleEl = document.getElementById('newUserRole');
+            const passwordField = document.getElementById('newUserPassword');
             const addUserMessage = document.getElementById('addUserMessage');
             const addUserModal = document.getElementById('addUserModal');
             
@@ -217,10 +217,10 @@ async function handleFormSubmit(e) {
     e.preventDefault();
     
     const userIdEl = document.getElementById('userId');
-    const userNameEl = document.getElementById('userName');
-    const userEmailEl = document.getElementById('userEmail');
-    const userRoleEl = document.getElementById('userRole');
-    const userPasswordEl = document.getElementById('userPassword');
+    const userNameEl = document.getElementById('newUserName');
+    const userEmailEl = document.getElementById('newUserEmail');
+    const userRoleEl = document.getElementById('newUserRole');
+    const userPasswordEl = document.getElementById('newUserPassword');
     
     // Check if all elements exist
     if (!userNameEl || !userEmailEl || !userRoleEl || !userPasswordEl) {
@@ -232,17 +232,21 @@ async function handleFormSubmit(e) {
     const isEdit = userId !== '';
     
     // Get form values with safe handling
-    const name = userNameEl.value ? userNameEl.value.trim() : '';
-    const email = userEmailEl.value ? userEmailEl.value.trim() : '';
-    const role = userRoleEl.value || '';
-    const password = userPasswordEl.value ? userPasswordEl.value.trim() : '';
+    const name = userNameEl && userNameEl.value ? userNameEl.value.trim() : '';
+    const email = userEmailEl && userEmailEl.value ? userEmailEl.value.trim() : '';
+    const role = userRoleEl && userRoleEl.value ? userRoleEl.value.trim() : '';
+    const password = userPasswordEl && userPasswordEl.value ? userPasswordEl.value.trim() : '';
+    
+    // Debug logging
+    console.log('Form values:', { name, email, role, password: password ? '***' : 'empty' });
     
     // Frontend validation
     if (!name || !email || !role) {
         const messageEl = document.getElementById('addUserMessage');
         messageEl.className = 'error-message';
-        messageEl.textContent = 'Name, email, and role are required';
+        messageEl.textContent = `Validation failed: Name="${name}", Email="${email}", Role="${role}"`;
         messageEl.style.display = 'block';
+        console.error('Validation failed:', { name, email, role });
         return;
     }
     
