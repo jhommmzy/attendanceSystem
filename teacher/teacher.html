@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - Attendance System</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Teacher Dashboard</h1>
+            <div class="user-info">
+                <span id="userName"></span>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('mark')">Mark Attendance</button>
+            <button class="tab" onclick="showTab('records')">Attendance Records</button>
+        </div>
+
+        <div id="markTab" class="tab-content active">
+            <h2>Mark Attendance</h2>
+            <div class="form-group">
+                <label for="attendanceDate">Date:</label>
+                <input type="date" id="attendanceDate" required>
+            </div>
+            <div class="attendance-grid" id="studentsGrid"></div>
+            <button class="btn btn-primary" onclick="submitAttendance()" style="margin-top: 20px;">Submit Attendance</button>
+            <div id="submitMessage" class="success-message"></div>
+        </div>
+
+        <div id="recordsTab" class="tab-content">
+            <h2>Attendance Records</h2>
+            <div class="table-container">
+                <table id="attendanceTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Student Name</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendanceTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../public/js/auth.js"></script>
+    <script src="teacher.js"></script>
+</body>
+</html>
+

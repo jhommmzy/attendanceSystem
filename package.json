@@ -1,0 +1,22 @@
+{
+  "name": "attendance-system",
+  "version": "1.0.0",
+  "description": "Student Attendance System with Admin, Student, and Teacher roles",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js"
+  },
+  "keywords": [
+    "attendance",
+    "system",
+    "nodejs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.15.3"
+  }
+}
