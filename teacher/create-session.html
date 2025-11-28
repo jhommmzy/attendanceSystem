@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Attendance Session - Teacher</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Create Attendance Session</h1>
+            <div class="user-info">
+                <span id="userName"></span>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h2>New Attendance Session</h2>
+            <form id="sessionForm" onsubmit="createSession(event)">
+                <div class="form-group">
+                    <label for="sessionYear">Year:</label>
+                    <select id="sessionYear" class="form-control" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="sessionMonth">Month:</label>
+                    <select id="sessionMonth" class="form-control" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="sessionDay">Day:</label>
+                    <select id="sessionDay" class="form-control" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="sessionTime">Time:</label>
+                    <input type="time" id="sessionTime" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Create Attendance Session</button>
+            </form>
+            <div id="message" class="success-message" style="margin-top: 20px; display: none;"></div>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <h2>My Attendance Sessions</h2>
+            <div class="table-container">
+                <table id="sessionsTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Attendance Count</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sessionsTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <button class="btn btn-secondary" onclick="window.location.href='teacher.html'">Back to Dashboard</button>
+        </div>
+    </div>
+
+    <script src="../public/js/auth.js"></script>
+    <script src="create-session.js"></script>
+</body>
+</html>
+

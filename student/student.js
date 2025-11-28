@@ -32,7 +32,7 @@ function displayAttendance() {
     tbody.innerHTML = '';
     
     if (attendance.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="2" style="text-align: center;">No attendance records found</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="3" style="text-align: center;">No attendance records found</td></tr>';
         return;
     }
     
@@ -42,8 +42,10 @@ function displayAttendance() {
     attendance.forEach(record => {
         const row = document.createElement('tr');
         const statusClass = record.status === 'present' ? 'btn-success' : 'btn-danger';
+        const timeIn = record.timeIn ? record.timeIn.substring(0, 5) : 'N/A';
         row.innerHTML = `
             <td>${new Date(record.date).toLocaleDateString()}</td>
+            <td>${timeIn}</td>
             <td><span class="btn ${statusClass}" style="padding: 5px 10px; border-radius: 3px;">${record.status.toUpperCase()}</span></td>
         `;
         tbody.appendChild(row);
@@ -69,4 +71,5 @@ async function loadStats() {
         console.error('Error loading stats:', error);
     }
 }
+
 

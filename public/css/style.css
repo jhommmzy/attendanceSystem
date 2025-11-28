@@ -6,9 +6,16 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #f5f5f5;
     min-height: 100vh;
-    padding: 20px;
+    padding: 10px;
+}
+
+/* Responsive padding for larger screens */
+@media (min-width: 768px) {
+    body {
+        padding: 20px;
+    }
 }
 
 .login-container {
@@ -20,16 +27,26 @@ body {
 
 .login-box {
     background: white;
-    padding: 40px;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
+    border: 1px solid #e0e0e0;
+    margin: 10px;
+}
+
+/* Responsive login box */
+@media (min-width: 768px) {
+    .login-box {
+        padding: 40px;
+        margin: 0;
+    }
 }
 
 .login-box h1 {
     text-align: center;
-    color: #667eea;
+    color: #333;
     margin-bottom: 10px;
 }
 
@@ -45,28 +62,61 @@ body {
     margin: 0 auto;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    padding: 30px;
-    min-height: calc(100vh - 40px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    min-height: calc(100vh - 20px);
+    border: 1px solid #e0e0e0;
+}
+
+/* Responsive padding for larger screens */
+@media (min-width: 768px) {
+    .dashboard-container {
+        padding: 30px;
+        min-height: calc(100vh - 40px);
+    }
 }
 
 .dashboard-header {
     display: flex;
+    flex-direction: column;
+    gap: 15px;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 30px;
     padding-bottom: 20px;
-    border-bottom: 2px solid #eee;
+    border-bottom: 2px solid #e0e0e0;
 }
 
 .dashboard-header h1 {
-    color: #667eea;
+    color: #333;
+    font-size: 24px;
+    margin: 0;
 }
 
 .user-info {
     display: flex;
-    align-items: center;
-    gap: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Responsive header for larger screens */
+@media (min-width: 768px) {
+    .dashboard-header {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .dashboard-header h1 {
+        font-size: 32px;
+    }
+    
+    .user-info {
+        flex-direction: row;
+        align-items: center;
+        width: auto;
+    }
 }
 
 .btn {
@@ -78,10 +128,19 @@ body {
     transition: all 0.3s;
     text-decoration: none;
     display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive buttons */
+@media (min-width: 768px) {
+    .btn {
+        width: auto;
+    }
 }
 
 .btn-primary {
-    background: #667eea;
+    background: #333;
     color: white;
     width: 100%;
     padding: 12px;
@@ -89,13 +148,14 @@ body {
 }
 
 .btn-primary:hover {
-    background: #5568d3;
+    background: #555;
 }
 
 .btn-secondary {
     background: #6c757d;
     color: white;
 }
+
 
 .btn-secondary:hover {
     background: #5a6268;
@@ -131,18 +191,30 @@ body {
 }
 
 .form-group input,
-.form-group select {
+.form-group select,
+.form-control {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Responsive form controls */
+@media (min-width: 768px) {
+    .form-group input,
+    .form-group select,
+    .form-control {
+        font-size: 16px;
+    }
 }
 
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #333;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 .error-message {
@@ -165,23 +237,39 @@ body {
 .table-container {
     overflow-x: auto;
     margin-top: 20px;
+    -webkit-overflow-scrolling: touch;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    min-width: 600px;
 }
 
 table th,
 table td {
-    padding: 12px;
+    padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+/* Responsive table */
+@media (min-width: 768px) {
+    table th,
+    table td {
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    table {
+        min-width: auto;
+    }
 }
 
 table th {
-    background: #667eea;
+    background: #333;
     color: white;
     font-weight: 600;
 }
@@ -192,9 +280,22 @@ table tr:hover {
 
 .attendance-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
     gap: 15px;
     margin-top: 20px;
+}
+
+/* Responsive attendance grid */
+@media (min-width: 600px) {
+    .attendance-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .attendance-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
 }
 
 .attendance-card {
@@ -207,14 +308,14 @@ table tr:hover {
 }
 
 .attendance-card:hover {
-    border-color: #667eea;
+    border-color: #333;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .attendance-card.selected {
-    border-color: #667eea;
-    background: #e7f3ff;
+    border-color: #333;
+    background: #f5f5f5;
 }
 
 .attendance-card h3 {
@@ -229,17 +330,27 @@ table tr:hover {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
     margin-bottom: 30px;
 }
 
+/* Responsive stats grid */
+@media (min-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+}
+
 .stat-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: white;
+    color: #333;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .stat-card h3 {
@@ -249,30 +360,47 @@ table tr:hover {
 
 .stat-card p {
     font-size: 14px;
-    opacity: 0.9;
+    color: #666;
+    margin-top: 5px;
 }
 
 .tabs {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 5px;
     margin-bottom: 20px;
     border-bottom: 2px solid #eee;
+    overflow-x: auto;
 }
 
 .tab {
-    padding: 10px 20px;
+    padding: 10px 15px;
     cursor: pointer;
     border: none;
     background: none;
-    font-size: 16px;
+    font-size: 14px;
     color: #666;
     border-bottom: 2px solid transparent;
     margin-bottom: -2px;
+    white-space: nowrap;
+}
+
+/* Responsive tabs */
+@media (min-width: 768px) {
+    .tabs {
+        gap: 10px;
+    }
+    
+    .tab {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
 }
 
 .tab.active {
-    color: #667eea;
-    border-bottom-color: #667eea;
+    color: #333;
+    border-bottom-color: #333;
+    font-weight: 600;
 }
 
 .tab-content {
@@ -318,7 +446,7 @@ table tr:hover {
 }
 
 .modal-header h2 {
-    color: #667eea;
+    color: #333;
 }
 
 .close {
@@ -330,5 +458,256 @@ table tr:hover {
 
 .close:hover {
     color: #333;
+}
+
+/* QR Code Styles */
+.qr-section {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.qr-section h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.qr-section img {
+    max-width: 300px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background: white;
+}
+
+.qr-scanner-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+#qr-reader {
+    width: 100%;
+    margin: 20px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+    min-height: 300px;
+}
+
+.info-message {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#scanResult {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+#scanResult h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#scanResult p {
+    margin: 5px 0;
+    color: #666;
+}
+
+/* Responsive QR Scanner */
+@media (max-width: 768px) {
+    #qr-reader {
+        min-height: 250px;
+    }
+    
+    .qr-scanner-container {
+        padding: 10px;
+    }
+    
+    .qr-section {
+        padding: 15px;
+        margin: 20px 0;
+    }
+    
+    .qr-section img {
+        max-width: 100%;
+    }
+}
+
+/* Modal buttons */
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+/* Responsive modal */
+@media (min-width: 768px) {
+    .modal-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .modal-buttons .btn {
+        width: auto;
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .modal-buttons .btn {
+        width: 100%;
+    }
+}
+
+/* Responsive stat cards */
+@media (max-width: 600px) {
+    .stat-card h3 {
+        font-size: 28px;
+    }
+    
+    .stat-card p {
+        font-size: 12px;
+    }
+}
+
+/* Responsive filter section */
+@media (max-width: 768px) {
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-group label {
+        font-size: 14px;
+    }
+}
+
+/* Responsive text and headings */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    h3 {
+        font-size: 18px;
+    }
+}
+
+/* Responsive dashboard sections */
+@media (max-width: 768px) {
+    .dashboard-container h2 {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+}
+
+/* Filter section styles */
+.filter-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-section h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.filter-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Responsive filter controls */
+@media (min-width: 768px) {
+    .filter-controls {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+    
+    .filter-buttons {
+        flex-direction: row;
+        margin-left: 10px;
+    }
+}
+
+/* Action section */
+.action-section {
+    margin: 20px 0;
+    text-align: center;
+    padding: 20px;
+}
+
+.highlight-box {
+    background: #e7f3ff;
+    border-radius: 8px;
+}
+
+.highlight-box h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.highlight-box p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Responsive action section */
+@media (min-width: 768px) {
+    .action-section .btn {
+        width: auto;
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+}
+
+/* Section header */
+.section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+/* Responsive section header */
+@media (min-width: 768px) {
+    .section-header {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .section-header .btn {
+        width: auto;
+    }
 }
 

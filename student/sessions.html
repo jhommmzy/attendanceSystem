@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Sessions - Student</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Attendance Sessions</h1>
+            <div class="user-info">
+                <span id="userName"></span>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <h2>Available Attendance Sessions</h2>
+        <p style="color: #666; margin-bottom: 20px;">Select an attendance session to mark your attendance</p>
+
+        <div id="sessionsList" class="attendance-grid" style="margin: 20px 0;">
+            <div style="text-align: center; padding: 20px; color: #666;">Loading sessions...</div>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <button class="btn btn-secondary" onclick="window.location.href='student.html'">Back to Dashboard</button>
+        </div>
+    </div>
+
+    <!-- QR Code Scanner Library -->
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script src="../public/js/auth.js"></script>
+    <script src="sessions.js"></script>
+</body>
+</html>
+

@@ -89,4 +89,3 @@ If the server doesn't start:
 To stop the server:
 - Press `Ctrl+C` in the terminal
 - Or find the process: `ps aux | grep "node backend/server.js"` and kill it
-

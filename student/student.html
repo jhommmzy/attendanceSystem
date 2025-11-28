@@ -16,6 +16,14 @@
             </div>
         </div>
 
+        <div class="action-section highlight-box">
+            <h2>Take Attendance</h2>
+            <p>View available attendance sessions created by teachers</p>
+            <button class="btn btn-primary" onclick="window.location.href='sessions.html'">
+                View Attendance Sessions
+            </button>
+        </div>
+
         <div class="stats-grid">
             <div class="stat-card">
                 <h3 id="totalAttendance">0</h3>
@@ -35,12 +43,14 @@
             </div>
         </div>
 
+
         <h2>My Attendance Records</h2>
         <div class="table-container">
             <table id="attendanceTable">
                 <thead>
                     <tr>
                         <th>Date</th>
+                        <th>Time In</th>
                         <th>Status</th>
                     </tr>
                 </thead>

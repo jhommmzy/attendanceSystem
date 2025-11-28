@@ -12,7 +12,7 @@ router.post('/login', async (req, res) => {
         );
 
         if (user) {
-            const token = Buffer.from(JSON.stringify({ id: user.id, role: user.role })).toString('base64');
+            const token = Buffer.from(JSON.stringify({ id: user.id, role: user.role, name: user.name })).toString('base64');
             res.json({
                 token,
                 user: { id: user.id, email: user.email, role: user.role, name: user.name }

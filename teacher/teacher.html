@@ -17,23 +17,86 @@
         </div>
 
         <div class="tabs">
-            <button class="tab active" onclick="showTab('mark')">Mark Attendance</button>
-            <button class="tab" onclick="showTab('records')">Attendance Records</button>
+            <button class="tab active" onclick="showTab('mark', event)">Mark Attendance</button>
+            <button class="tab" onclick="showTab('records', event)">Attendance Records</button>
+        </div>
+        <div class="action-section">
+            <button class="btn btn-primary" onclick="window.location.href='create-session.html'">
+                Create Attendance Session
+            </button>
         </div>
 
         <div id="markTab" class="tab-content active">
-            <h2>Mark Attendance</h2>
-            <div class="form-group">
-                <label for="attendanceDate">Date:</label>
-                <input type="date" id="attendanceDate" required>
+            <div id="startAttendanceSection">
+                <h2>Start Attendance Session</h2>
+                <div class="form-group">
+                    <label for="attendanceYear">Year:</label>
+                    <select id="attendanceYear" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label for="attendanceMonth">Month:</label>
+                    <select id="attendanceMonth" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label for="attendanceDay">Day:</label>
+                    <select id="attendanceDay" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label for="attendanceTime">Time:</label>
+                    <input type="time" id="attendanceTime" class="form-control" required>
+                </div>
+                <button class="btn btn-primary" onclick="startAttendance()" style="margin-top: 20px;">Start Attendance</button>
             </div>
-            <div class="attendance-grid" id="studentsGrid"></div>
-            <button class="btn btn-primary" onclick="submitAttendance()" style="margin-top: 20px;">Submit Attendance</button>
-            <div id="submitMessage" class="success-message"></div>
+
+            <div id="attendanceSessionSection" style="display: none;">
+                <h2>Attendance Session</h2>
+                <div style="background: #e7f3ff; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    <p><strong>Teacher:</strong> <span id="teacherNameDisplay"></span></p>
+                    <p><strong>Date:</strong> <span id="selectedDateDisplay"></span></p>
+                    <p><strong>Time:</strong> <span id="selectedTimeDisplay"></span></p>
+                </div>
+                <div style="background: #d4edda; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #28a745;">
+                    <p style="color: #155724; font-weight: bold;">✓ Attendance session is active. Students can now scan their QR codes to mark attendance.</p>
+                </div>
+                <div class="attendance-grid" id="studentsGrid"></div>
+                <div id="submitMessage" class="success-message" style="margin-top: 15px;"></div>
+            </div>
         </div>
 
         <div id="recordsTab" class="tab-content">
-            <h2>Attendance Records</h2>
+            <div class="section-header">
+                <h2>Attendance Records</h2>
+                <button class="btn btn-success" onclick="exportToPDF()" id="exportPDFBtn">
+                    Export to PDF
+                </button>
+            </div>
+            
+            <div class="filter-section">
+                <h3>Filter Records by Date</h3>
+                <div class="filter-controls">
+                    <div class="form-group">
+                        <label for="filterYear">Year:</label>
+                        <select id="filterYear" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filterMonth">Month:</label>
+                        <select id="filterMonth" class="form-control">
+                            <option value="">All Months</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filterDay">Day:</label>
+                        <select id="filterDay" class="form-control">
+                            <option value="">All Days</option>
+                        </select>
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="btn btn-primary" onclick="filterRecords()">View Records</button>
+                        <button class="btn btn-secondary" onclick="clearFilter()">Show All</button>
+                    </div>
+                </div>
+            </div>
+
             <div class="table-container">
                 <table id="attendanceTable">
                     <thead>
@@ -41,6 +104,7 @@
                             <th>ID</th>
                             <th>Student Name</th>
                             <th>Date</th>
+                            <th>Time In</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -50,6 +114,9 @@
         </div>
     </div>
 
+    <!-- PDF Export Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
     <script src="../public/js/auth.js"></script>
     <script src="teacher.js"></script>
 </body>
